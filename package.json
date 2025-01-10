@@ -15,7 +15,7 @@
     "test": "vitest run --globals",
     "clean": "rm -r publicodes-build/*",
     "doc": "yarn run compile && cd doc && yarn run dev",
-    "doc:build": "yarn run compile && cd doc && yarn run build",
+    "doc:build": "yarn run compile && cd doc && yarn run build"
   },
   "peerDependencies": {
     "publicodes": "^1.6.1"
