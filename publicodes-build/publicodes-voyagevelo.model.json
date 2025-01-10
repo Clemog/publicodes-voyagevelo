@@ -1,1 +1,0 @@
-{"salaire net":{"valeur":"salaire brut - cotisations salariales"},"salaire brut":{"titre":"Salaire brut mensuel","par défaut":2500,"unité":"€/mois"},"cotisations salariales":{"produit":["salaire brut","taux"]},"cotisations salariales . taux":{"valeur":"21.7 %"}}
