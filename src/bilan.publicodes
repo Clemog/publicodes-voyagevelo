@@ -1,0 +1,8 @@
+bilan:
+  formule:
+    somme:
+      - alimentation
+      - transport
+      - logement
+      - equipement
+      - 1000
