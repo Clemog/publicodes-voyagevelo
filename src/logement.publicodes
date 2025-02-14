@@ -1,1 +1,19 @@
-logement: 0
+logement:
+  formule:
+    somme:
+      - hotel
+      - airbnb
+      - camping
+
+logement . hotel:
+  titre: Hôtel
+  formule: 0
+  unité: kgCO2e
+
+logement . airbnb:
+  formule: 0
+  unité: kgCO2e
+
+logement . camping:
+  formule: 0
+  unité: kgCO2e

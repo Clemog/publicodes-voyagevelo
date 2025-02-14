@@ -1,3 +1,56 @@
 equipement:
   titre: Équipement
+  formule:
+    somme:
+      - envoi colis
+      - materiel
+
+equipement . envoi colis:
+  titre: Envoi de colis
   formule: 0
+  unité: kgCO2e
+
+equipement . materiel:
+  titre: Matériel
+  formule:
+    somme:
+      - velo
+      - materiel de reparation velo
+      - tente
+      - matelas
+      - sacoches
+      - vetements
+      - autre materiel de camping
+  unité: kgCO2e
+
+equipement . materiel . velo:
+  titre: Vélo
+  formule: 0
+  unité: kgCO2e
+
+equipement . materiel . materiel de reparation velo:
+  titre: Matériel de réparation vélo
+  formule: 0
+  unité: kgCO2e
+
+equipement . materiel . tente:
+  formule: 0
+  unité: kgCO2e
+
+equipement . materiel . matelas:
+  formule: 0
+  unité: kgCO2e
+
+equipement . materiel . sacoches:
+  formule: 0
+  unité: kgCO2e
+
+equipement . materiel . vetements:
+  titre: Vêtements
+  formule: 0
+  unité: kgCO2e
+
+equipement . materiel . autre materiel de camping:
+  titre: Autre matériel de camping
+  formule: 0
+  unité: kgCO2e

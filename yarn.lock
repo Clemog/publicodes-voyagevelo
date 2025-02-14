@@ -148,6 +148,16 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.21.5.tgz#acad351d582d157bb145535db2a6ff53dd514b5c"
   integrity sha512-tQd/1efJuzPC6rCFwEvLtci/xNFcTZknmXs98FYDfGE4wP9ClFV98nyKrzJKVPMhdDnjzLhdUyMX4PsQAPjwIw==
 
+"@incubateur-ademe/nosgestesclimat@^3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@incubateur-ademe/nosgestesclimat/-/nosgestesclimat-3.5.0.tgz#d1332e5eb104bd9db4363241299cfaf61ccd61d5"
+  integrity sha512-eCGovtumU/WZixVMNORA4f7GgCK0NHbXzxQdDyqa2XGySVH9fGRZMrH7USB2khdkCFTncElqK0Gf1rrmdowFsA==
+
+"@incubateur-ademe/publicodes-commun@^1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@incubateur-ademe/publicodes-commun/-/publicodes-commun-1.1.5.tgz#6f5aeccd1bfda9856dc81702cde4102006f7ce8f"
+  integrity sha512-L9eHM53sabNPtWr7H9RbJCEUEMBf3RuWCjPJ7NKk5rQjprCTNAB72sWMW04/LUi/JzZH4CLizpvqt2Z+I3H3Kg==
+
 "@isaacs/cliui@^8.0.2":
   version "8.0.2"
   resolved "https://registry.yarnpkg.com/@isaacs/cliui/-/cliui-8.0.2.tgz#b37667b7bc181c168782259bab42474fbf52b550"
