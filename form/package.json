@@ -7,9 +7,12 @@
   "scripts": {
     "dev": "vite"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@tailwindcss/vite": "^4.0.7",
+    "tailwindcss": "^4.0.7"
+  },
   "devDependencies": {
-    "@publicodes/forms": "^0.2.0",
+    "@publicodes/forms": "https://pkg.pr.new/publicodes/publicodes/@publicodes/forms@4e8149b",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",

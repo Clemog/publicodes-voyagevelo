@@ -28,6 +28,7 @@
     "@types/jest": "^29.5.14",
     "futureco-data": "^0.1.0",
     "nodemon": "^3.1.9",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "vitest": "^2.1.8",
     "yarn-upgrade-all": "^0.7.4"
   },

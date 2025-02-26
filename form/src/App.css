@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+* {
+    --textColor: #2975d1;
+    --darkerColor: #333350;
+  }
+  
+.App {
+padding: 1rem;
+margin-bottom: 1rem;
+}
+
+@layer components {
+  .scrollbar::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #f7f4ed;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #c5c2c2;
+    border-radius: 100vh;
+    border: 3px solid #f6f7ed;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #959494;
+  }
+}
