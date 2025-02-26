@@ -1,19 +1,82 @@
+importer!:
+  depuis:
+    nom: '@incubateur-ademe/nosgestesclimat'
+  dans: ngc
+  les règles:
+    - logement . vacances . empreinte hotel par nuit
+    - logement . vacances . camping . empreinte par nuit
+    - logement . vacances . auberge de jeunesse . empreinte par nuit
+    - logement . vacances . locations . empreinte par nuit
+
 logement:
   formule:
     somme:
       - hotel
+      - auberge de jeunesse
       - airbnb
       - camping
+      - sauvage ou WS
+  note: Pour le moment, on ne vérifie pas que le nombre de nuit total correspond à la durée du voyage
 
 logement . hotel:
   titre: Hôtel
-  formule: 0
+  formule: nombre de nuits * ngc . logement . vacances . empreinte hotel par nuit / général . nombre de voyageurs
   unité: kgCO2e
+
+logement . hotel . nombre de nuits:
+  question: Combien de nuits à l'hôtel ?
+  par défaut: 10
+  unité: nuit
+
+logement . auberge de jeunesse:
+  formule: nombre de nuits * ngc . logement . vacances . auberge de jeunesse . empreinte par nuit
+  unité: kgCO2e
+
+logement . auberge de jeunesse . nombre de nuits:
+  question: Combien de nuits en auberge de jeunesse ?
+  par défaut: 10
+  unité: nuit
 
 logement . airbnb:
-  formule: 0
+  formule: nombre de nuits * ngc . logement . vacances . locations . empreinte par nuit / général . nombre de voyageurs
   unité: kgCO2e
 
+logement . airbnb . nombre de nuits:
+  question: Combien de nuits en airbnb?
+  par défaut: 10
+  unité: nuit
+
 logement . camping:
-  formule: 0
+  formule: nombre de nuits * ngc . logement . vacances . camping . empreinte par nuit
   unité: kgCO2e
+
+logement . camping . nombre de nuits:
+  question: Combien de nuits à l'hôtel ?
+  par défaut: 40
+  unité: nuit
+
+logement . sauvage ou WS:
+  formule: nombre de nuits * empreinte par nuit / général . nombre de voyageurs
+  unité: kgCO2e
+
+logement . sauvage ou WS . nombre de nuits:
+  question: Combien de nuits en camping sauvage ou WS ?
+  par défaut: 20
+  unité: nuit
+
+logement . sauvage ou WS . empreinte par nuit:
+  formule: 0
+  note: On considère que l'impact d'une nuit en camping sauvage ou chez l'habitant (Warm Shower par exemple) est nul.
+  unité: kgCO2e/nuit
+
+logement . nombre de nuits total:
+  formule:
+    somme:
+      - hotel . nombre de nuits
+      - auberge de jeunesse . nombre de nuits
+      - airbnb . nombre de nuits
+      - camping . nombre de nuits
+      - sauvage ou WS . nombre de nuits
+
+logement . nombre de nuits possible:
+  formule: nombre de nuits total * 1 jour/nuit = général . nombre de jours

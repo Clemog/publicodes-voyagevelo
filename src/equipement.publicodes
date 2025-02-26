@@ -2,13 +2,13 @@ equipement:
   titre: Équipement
   formule:
     somme:
-      - envoi colis
+      # - envoi colis
       - materiel
 
-equipement . envoi colis:
-  titre: Envoi de colis
-  formule: 0
-  unité: kgCO2e
+# equipement . envoi colis:
+#   titre: Envoi de colis
+#   formule: 0
+#   unité: kgCO2e
 
 equipement . materiel:
   titre: Matériel

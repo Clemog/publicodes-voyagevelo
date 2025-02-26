@@ -10,12 +10,13 @@ bilan:
       - equipement
   unité: kgCO2e
 
-nombre de voyageurs:
+général:
+
+général . nombre de voyageurs:
   question: Combien de personnes voyagent ?
   par défaut: 2
-  unité: personne
 
-nombre de jours:
+général . nombre de jours:
   question: Combien de jours dure le voyage ?
   par défaut: 90
   unité: jour

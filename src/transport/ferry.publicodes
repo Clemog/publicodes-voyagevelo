@@ -1,0 +1,36 @@
+importer!:
+  depuis:
+    nom: futureco-data
+    url: https://github.com/laem/futureco-data
+  les règles:
+    - transport . ferry . empreinte par km volume
+    - transport . ferry . vitesse moyenne . métrique
+    # This syntax lets us blacklist questions : they won't be displayed in the conversation
+    - transport . ferry . durée du voyage:
+        question:
+    - transport . ferry . groupe:
+        question:
+    - transport . ferry . cabine:
+        question:
+    - transport . ferry . distance aller . orthodromique:
+        question:
+    - transport . ferry . cabine . nombre:
+        question:
+    - transport . ferry . consommation de services:
+        question:
+    - transport . ferry . voiture:
+        question:
+    - transport . ferry . surface . garage . bas:
+        question:
+    - transport . ferry . surface . garage . haut:
+        question:
+    - transport . ferry . surface . cabines:
+        question:
+    - transport . ferry . surface . sièges:
+        question:
+    - transport . ferry . surface . loisirs:
+        question:
+    - transport . ferry . surface . communs:
+        question:
+    - transport . ferry . vitesse:
+        question:

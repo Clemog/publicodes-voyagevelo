@@ -1,23 +1,59 @@
+importer!:
+  depuis:
+    nom: '@incubateur-ademe/nosgestesclimat'
+  dans: ngc
+  les règles:
+    - transport . avion . moyen courrier . empreinte par km
+    - transport . avion . moyen courrier . vitesse moyenne
+    - transport . train . impact par km
+    - transport . transports commun . car . impact par km
+
 transport:
   formule:
     somme:
       - avion
       - train
-      - bus
+      - car
       - ferry
 
 transport . avion:
-  formule: 0
+  formule: heures de vol * ngc . transport . avion . moyen courrier . vitesse moyenne * ngc . transport . avion . moyen courrier . empreinte par km
   unité: kgCO2e
+
+transport . avion . heures de vol:
+  question: Combien d'heures en avion ?
+  par défaut: 8
+  unité: h
 
 transport . train:
-  formule: 0
+  formule: ngc . transport . train . impact par km * km
   unité: kgCO2e
 
-transport . bus:
-  formule: 0
+transport . train . km:
+  question: Combien de km en train ?
+  par défaut: 500
+  unité: km
+
+transport . car:
+  formule: ngc . transport . transports commun . car . impact par km * km
   unité: kgCO2e
+
+transport . car . km:
+  question: Combien de km en car ?
+  par défaut: 500
+  unité: km
 
 transport . ferry:
-  formule: 0
+  formule: heures * empreinte par heure
   unité: kgCO2e
+
+transport . ferry . heures:
+  question: Combien d'heures en ferry ?
+  par défaut: 8
+  unité: h
+
+transport . ferry . empreinte par heure:
+  formule: 9.99
+  unité: kgCO2e/h
+  note: |
+    Pour le moment, nous écrivons cette valeur "en dur" car l'import des règles ne fonctionne pas correctement avec publicodes/forms: toutes les questions "sous-jacentes" du modèle importé sont affichées. Cette donnée est issue de futureco-data.

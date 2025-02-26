@@ -13,20 +13,24 @@ importer!:
     - alimentation . plats . viande rouge . empreinte carbone
     - alimentation . plats . poisson gras . empreinte carbone
     - alimentation . plats . poisson blanc . empreinte carbone
+    - alimentation . boisson . sucrées . facteur sodas carbone
 
 alimentation:
   formule:
     somme:
-      - petit dejeuner
-      - repas
+      - petit dejeuner * compensation sportive
+      - repas * compensation sportive
       - snacks
       - boissons
-      - réchaud
   unité: kgCO2e
+
+alimentation . compensation sportive:
+  formule: 1.5
+  note: On pourrait évaluer la dépense énergétique à partir de la distance journalière parcourue pour quantifier plus précisémment les besoins alimentaire accrus par l'activité sportive.
 
 alimentation . petit dejeuner:
   titre: Petit déjeuner
-  formule: nombre de jours * 1 repas/jour * empreinte
+  formule: général . nombre de jours * 1 repas/jour * empreinte
   unité: kgCO2e
 
 alimentation . petit dejeuner . empreinte:
@@ -40,36 +44,145 @@ alimentation . petit dejeuner . empreinte:
         alors: ngc . alimentation . petit déjeuner . britannique . empreinte carbone
       - si: type = 'végétalien'
         alors: ngc . alimentation . petit déjeuner . végétalien . empreinte carbone
+      - sinon: 0 kgCO2e
 
 alimentation . petit dejeuner . type:
-  question: Quel type de petit déjeuner prenez-vous ?
-  formule:
-    une possibilité:
-      choix obligatoire: oui
-      possibilités:
-        - continental
-        - lait vache céréales
-        - britannique
-        - végétalien
+  question: Type de petit déjeuner
+  description: |
+    Si vous ne trouvez pas votre petit déjeuner dans la liste, choisissez celui qui s'en rapproche le plus.
+  une possibilité:
+    - continental
+    - lait vache céréales
+    - britannique
+    - végétalien
+    - aucun
   avec:
     continental:
     lait vache céréales:
     britannique:
     végétalien:
+    aucun:
   par défaut: "'continental'"
 
 alimentation . repas:
-  formule: 0
+  formule: général . nombre de jours * 2 repas/jour * empreinte
   unité: kgCO2e
+
+alimentation . repas . empreinte:
+  formule:
+    variations:
+      - si: régime = 'végétarien'
+        alors: régime végétarien
+      - si: régime = 'viande parfois'
+        alors: régime viande parfois
+      - si: régime = 'viande tous les jours'
+        alors: régime viande tous les jours
+      - si: régime = 'viande tous les repas'
+        alors: régime viande tous les repas
+      - sinon: 0 kgCO2e/repas
+
+alimentation . repas . empreinte . régime végétarien:
+  formule:
+    somme:
+      - ngc . alimentation . plats . végétalien . empreinte carbone * 25%
+      - ngc . alimentation . plats . végétarien . empreinte carbone * 75%
+  unité: kgCO2e/repas
+
+alimentation . repas . empreinte . régime viande parfois:
+  formule:
+    somme:
+      - ngc . alimentation . plats . végétarien . empreinte carbone * 80%
+      - ngc . alimentation . plats . viande blanche . empreinte carbone * 10%
+      - ngc . alimentation . plats . viande rouge . empreinte carbone * 5%
+      - ngc . alimentation . plats . poisson blanc . empreinte carbone * 5%
+  unité: kgCO2e/repas
+
+alimentation . repas . empreinte . régime viande tous les jours:
+  formule:
+    somme:
+      - ngc . alimentation . plats . végétarien . empreinte carbone * 20%
+      - ngc . alimentation . plats . viande blanche . empreinte carbone * 45%
+      - ngc . alimentation . plats . viande rouge . empreinte carbone * 20%
+      - ngc . alimentation . plats . poisson gras . empreinte carbone * 5%
+      - ngc . alimentation . plats . poisson blanc . empreinte carbone * 10%
+  unité: kgCO2e/repas
+
+alimentation . repas . empreinte . régime viande tous les repas:
+  formule:
+    somme:
+      - ngc . alimentation . plats . viande blanche . empreinte carbone * 55%
+      - ngc . alimentation . plats . viande rouge . empreinte carbone * 30%
+      - ngc . alimentation . plats . poisson gras . empreinte carbone * 5%
+      - ngc . alimentation . plats . poisson blanc . empreinte carbone * 10%
+  unité: kgCO2e/repas
+
+alimentation . repas . régime:
+  question: Régime alimentaire
+  une possibilité:
+    - végétarien
+    - peu de viande
+    - viande régulèrement
+    - essentiellement viande
+  avec:
+    végétarien:
+    peu de viande:
+    viande régulèrement:
+    essentiellement viande:
+  par défaut: "'végétarien'"
 
 alimentation . snacks:
-  formule: 0
+  formule: général . nombre de jours * nombre * empreinte
   unité: kgCO2e
+
+alimentation . snacks . nombre:
+  question: Nombre de barres par jour
+  par défaut: 5
+  unité: barre/jour
+
+alimentation . snacks . empreinte:
+  formule:
+    produit:
+      - moyenne:
+          - barre chocolat
+          - barre fruits
+      - 0.05 kg/barre
+  note: On fait l'hypothèse qu'une barre pèse 50g.
+  unité: kgCO2e/barre
+
+alimentation . snacks . empreinte . barre chocolat:
+  formule: 7.25
+  unité: kgCO2e/kg
+  note: https://agribalyse.ademe.fr/app/aliments/31000#Barre_chocolat%C3%A9e_biscuit%C3%A9e
+
+alimentation . snacks . empreinte . barre fruits:
+  formule: 5.32
+  unité: kgCO2e/kg
+  note: https://agribalyse.ademe.fr/app/aliments/31071#Barre_chocolat%C3%A9e_aux_fruits_secs
 
 alimentation . boissons:
-  formule: 0
+  formule: général . nombre de jours * quantité * ngc . alimentation . boisson . sucrées . facteur sodas carbone
   unité: kgCO2e
 
-alimentation . réchaud:
-  formule: 0
-  unité: kgCO2e
+alimentation . boissons . fréquence sodas:
+  question: Consommation de sodas
+  une possibilité:
+    - jamais
+    - parfois
+    - tous les jours
+  avec:
+    jamais:
+    parfois:
+    tous les jours:
+  par défaut: "'parfois'"
+
+alimentation . boissons . quantité:
+  formule:
+    variations:
+      - si: fréquence sodas = 'jamais'
+        alors: 0
+      - si: fréquence sodas = 'parfois'
+        alors: 0.3
+      - si: fréquence sodas = 'tous les jours'
+        alors: 0.75
+      - sinon: 0
+  unité: l/jour
