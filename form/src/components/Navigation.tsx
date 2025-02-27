@@ -16,10 +16,6 @@ export default function Navigation({ formState, setFormState }: Props) {
   // Get pagination information
   const { pageCount, hasNextPage, hasPreviousPage } = pagination(formState)
 
-  console.log('pageCount', pageCount)
-  console.log('hasNextPage', hasNextPage)
-  console.log('hasPreviousPage', hasPreviousPage)
-
   if (pageCount === 1) {
     return null
   }

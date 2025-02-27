@@ -43,8 +43,6 @@ export default function Simulation() {
       handleInputChange({ formState, id: dottedName, value, engine })
     )
   }
-  console.log(formState)
-  console.log(pageElements)
 
   return (
     <>
