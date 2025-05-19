@@ -19,16 +19,15 @@
     "doc:build": "yarn run compile && cd doc && yarn run build"
   },
   "peerDependencies": {
-    "publicodes": "^1.6.1"
+    "publicodes": "^1.8.5"
   },
   "devDependencies": {
     "@incubateur-ademe/nosgestesclimat": "^3.5.0",
     "@incubateur-ademe/publicodes-commun": "^1.1.5",
-    "@publicodes/tools": "^1.3.0-2",
+    "@publicodes/tools": "^1.7.2",
     "@types/jest": "^29.5.14",
     "futureco-data": "^0.1.0",
     "nodemon": "^3.1.9",
-    "prettier-plugin-tailwindcss": "^0.6.11",
     "vitest": "^2.1.8",
     "yarn-upgrade-all": "^0.7.4"
   },

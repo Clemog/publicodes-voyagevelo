@@ -73,11 +73,11 @@ alimentation . repas . empreinte:
     variations:
       - si: régime = 'végétarien'
         alors: régime végétarien
-      - si: régime = 'viande parfois'
+      - si: régime = 'peu de viande'
         alors: régime viande parfois
-      - si: régime = 'viande tous les jours'
+      - si: régime = 'viande régulièrement'
         alors: régime viande tous les jours
-      - si: régime = 'viande tous les repas'
+      - si: régime = 'essentiellement viande'
         alors: régime viande tous les repas
       - sinon: 0 kgCO2e/repas
 
@@ -121,12 +121,12 @@ alimentation . repas . régime:
   une possibilité:
     - végétarien
     - peu de viande
-    - viande régulèrement
+    - viande régulièrement
     - essentiellement viande
   avec:
     végétarien:
     peu de viande:
-    viande régulèrement:
+    viande régulièrement:
     essentiellement viande:
   par défaut: "'végétarien'"
 

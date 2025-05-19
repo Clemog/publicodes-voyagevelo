@@ -1,20 +1,21 @@
-import {
-  FormState,
-  goToNextPage,
-  goToPreviousPage,
-  pagination
-} from '@publicodes/forms'
-import { RuleName } from '../../../publicodes-build'
 import Button from './Navigation/Button'
 
 type Props = {
-  formState: FormState<RuleName>
-  setFormState: React.Dispatch<React.SetStateAction<FormState<RuleName>>>
+  paginationInfo: {
+    current: number
+    pageCount: number
+    hasNextPage: boolean
+    hasPreviousPage: boolean
+  }
+  handlePaginationChange: (direction: 'previous' | 'next') => void
 }
 
-export default function Navigation({ formState, setFormState }: Props) {
+export default function Navigation({
+  paginationInfo,
+  handlePaginationChange
+}: Props) {
   // Get pagination information
-  const { pageCount, hasNextPage, hasPreviousPage } = pagination(formState)
+  const { current, pageCount, hasNextPage, hasPreviousPage } = paginationInfo
 
   if (pageCount === 1) {
     return null
@@ -24,14 +25,17 @@ export default function Navigation({ formState, setFormState }: Props) {
       <Button
         disabled={!hasPreviousPage}
         title="Aller à la page précédente"
-        onClick={() => setFormState(goToPreviousPage(formState))}
+        onClick={() => handlePaginationChange('previous')}
       >
         Précédent
       </Button>
+      <span>
+        {current} / {pageCount}{' '}
+      </span>
       <Button
         disabled={!hasNextPage}
         title="Aller à la page suivante"
-        onClick={() => setFormState(goToNextPage(formState))}
+        onClick={() => handlePaginationChange('next')}
       >
         Suivant
       </Button>

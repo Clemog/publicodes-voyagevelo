@@ -1,9 +1,9 @@
-import { EvaluatedOptionsGroup, Option } from '@publicodes/forms'
+import { EvaluatedRadioGroup, Option } from '@publicodes/forms'
 import { RuleName } from '../../../publicodes-build'
 import Label from './Question/Label'
 
 type Props = {
-  formElement: EvaluatedOptionsGroup & {
+  formElement: EvaluatedRadioGroup<RuleName> & {
     hidden: boolean
     useful: boolean
     disabled: boolean
@@ -23,16 +23,15 @@ export default function FormRadioInput({ formElement, setValue }: Props) {
             formElement.options.map((option: Option) =>
               option ? (
                 <label
-                  className={`relative flex items-center gap-2 rounded-xl border-1 bg-white px-4 py-2 text-left transition-colors ${!formElement.disabled ? 'cursor-pointer' : ''}`}
+                  className={`relative flex items-center gap-2 rounded-xl border-1 bg-white px-4 py-2 text-left transition-colors ${
+                    !formElement.disabled ? 'cursor-pointer' : ''
+                  }`}
                   key={option.value as string}
                 >
                   <input
                     type="radio"
                     onChange={() =>
-                      setValue(
-                        formElement.id as RuleName,
-                        option.value as string
-                      )
+                      setValue(formElement.id, option.value as string)
                     }
                     checked={
                       formElement.value !== undefined

@@ -1,4 +1,4 @@
-import Engine from 'publicodes'
+import Engine, { formatValue } from 'publicodes'
 import { capitalizeString } from '../utils/capitalizeString'
 import { RuleName } from '../../../publicodes-build'
 
@@ -7,11 +7,11 @@ type Props = {
   engine: Engine
 }
 export default function Result({ targetRule, engine }: Props) {
-  const result = engine.evaluate(targetRule).nodeValue
+  const result = engine.evaluate(targetRule)
   return (
     <div className='my-4'>
       <h2>
-        {capitalizeString(targetRule)}: {result}
+        {capitalizeString(targetRule)}: {formatValue(result)}
       </h2>
     </div>
   )

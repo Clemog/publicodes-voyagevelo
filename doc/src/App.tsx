@@ -1,29 +1,29 @@
-import Engine from "publicodes";
-import "./App.css";
-import { RulePage } from "@publicodes/react-ui";
-import { Link, Route, Routes, useParams } from "react-router-dom";
-import { ComponentProps, useRef } from "react";
-import ReactMardown from "react-markdown";
+import Engine from 'publicodes'
+import './App.css'
+import { RulePage } from '@publicodes/react-ui'
+import { Link, Route, Routes, useParams } from 'react-router-dom'
+import { ComponentProps, useRef } from 'react'
+import ReactMardown from 'react-markdown'
 
 // Import the model from the compiled model
-import model from "../../publicodes-build";
+import model from '../../publicodes-build'
 
 // Instantiate the publicodes engine with the model
-const engine = new Engine(model);
+const engine = new Engine(model)
 
 // The base URL of the application (in production, the app is served from a subdirectory of
 // the github pages repository, so we need to prefix all the URLs with the subdirectory)
-const baseUrl = process.env.NODE_ENV === "development" ? "" : "/model-template";
+const baseUrl = process.env.NODE_ENV === 'development' ? '' : '/model-template'
 
 // The default rule to display when the user lands on the documentation
-const defaultRule = "bilan";
+const defaultRule = 'bilan'
 
 function Documentation() {
-  const url = useParams()["*"];
+  const url = useParams()['*']
   const { current: renderers } = useRef({
     Link,
-    Text: ({ children }) => <ReactMardown children={children} />,
-  } as ComponentProps<typeof RulePage>["renderers"]);
+    Text: ({ children }) => <ReactMardown children={children} />
+  } as ComponentProps<typeof RulePage>['renderers'])
 
   return (
     <div>
@@ -33,11 +33,11 @@ function Documentation() {
         searchBar={true}
         engine={engine}
         renderers={renderers}
-        language={"fr"}
-        npmPackage='model-template'
+        language={'fr'}
+        npmPackage="model-template"
       />
     </div>
-  );
+  )
 }
 
 function Landing() {
@@ -52,16 +52,16 @@ function Landing() {
         </li>
       </ul>
     </div>
-  );
+  )
 }
 
 export default function App() {
   return (
-    <div className='App'>
+    <div className="App">
       <Routes>
         <Route path={`${baseUrl}/`} element={<Landing />} />
         <Route path={`${baseUrl}/doc/*`} element={<Documentation />} />
       </Routes>
     </div>
-  );
+  )
 }
