@@ -2,13 +2,14 @@ equipement:
   titre: Équipement
   formule:
     somme:
-      # - envoi colis
-      - materiel
+      - materiel * part materiel alloué
 
-# equipement . envoi colis:
-#   titre: Envoi de colis
-#   formule: 0
-#   unité: kgCO2e
+equipement . part materiel alloué:
+  titre: Part des équipement réellement alloués au voyage
+  formule: 30%
+  note: |
+    Pour le moment, on considère que 20% de l'équipement est réellement alloué au voyage par rapport à l'ensemble de la durée de vie des équipements.
+    C'est une hypothèse très forte. Il faudrait affiner  ce chiffre en fonction du nombre de jours de voyage et des kilomètres parcourus.
 
 equipement . materiel:
   titre: Matériel
@@ -25,32 +26,58 @@ equipement . materiel:
 
 equipement . materiel . velo:
   titre: Vélo
-  formule: 0
+  formule:
+    variations:
+      - si: assistance electrique
+        alors: empreinte velo electrique
+      - sinon: empreinte velo musculaire
   unité: kgCO2e
+
+equipement . materiel . velo . assistance electrique:
+  titre: Vélo à assistance électrique
+  valeur: non
+
+equipement . materiel . velo . empreinte velo electrique:
+  formule: 15000 km * 0.0227 kgCO2e/km
+  unité: kgCO2e
+  note: |
+    Données issues de la Base Empreinte.
+
+equipement . materiel . velo . empreinte velo musculaire:
+  formule: 15000 km * 0.0115 kgCO2e/km
+  unité: kgCO2e
+  note: |
+    Données issues de la Base Empreinte.
 
 equipement . materiel . materiel de reparation velo:
   titre: Matériel de réparation vélo
   formule: 0
+  note: |
+    Pour le moment, les rachats de matériel ne sont pas pris en compte faute de données.
   unité: kgCO2e
 
 equipement . materiel . tente:
-  formule: 0
+  formule: 50 kgCO2e / 2
+  note: Estimation pour une tente 2 places, partagée donc
   unité: kgCO2e
 
 equipement . materiel . matelas:
-  formule: 0
+  formule: 20
   unité: kgCO2e
 
 equipement . materiel . sacoches:
-  formule: 0
+  formule: 15
+  note: Ortlieb, paire de sacoches back roller classic
   unité: kgCO2e
 
 equipement . materiel . vetements:
   titre: Vêtements
-  formule: 0
+  formule: 100
   unité: kgCO2e
 
 equipement . materiel . autre materiel de camping:
   titre: Autre matériel de camping
   formule: 0
+  note: |
+    Pour le moment, le petit matériel de camping n'est pas pris en compte faute de données.
   unité: kgCO2e
