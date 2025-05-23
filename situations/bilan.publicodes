@@ -1,11 +1,35 @@
-# Ce fichier contient des exemples de situations (à l'image d'un jeu de réponse pour votre modèle de calcul). Elles sont utiles pour les tests notamment.
-# Pour le moment, il est uniquement utilisé par la commande "publicodes dev"
+grece 2024:
+  contexte:
+    transport . avion . heures de vol: 0
+    transport . train . km: 1000
+    transport . car . km: 0
+    transport . ferry . heures: 30
+    logement . hotel . nombre de nuits: 10
+    logement . auberge de jeunesse . nombre de nuits: 10
+    logement . airbnb . nombre de nuits: 10
+    logement . camping . nombre de nuits: 40
+    logement . sauvage ou WS . nombre de nuits: 20
+    général . nombre de voyageurs: 2
+    général . nombre de jours: 90
+    alimentation . petit dejeuner . type: "'lait vache céréales'"
+    alimentation . repas . régime: "'végétarien'"
+    alimentation . snacks . nombre: 5
+    alimentation . boissons . fréquence sodas: "'tous les jours'"
 
-# salaire SMIC:
-#   contexte:
-#     salaire brut: SMIC mensuel
-
-# salaire médian cadre:
-#   contexte:
-#     salaire brut: 2600 €/mois
-#     cotisations salariales . taux: 25%
+rayon orient:
+  contexte:
+    transport . avion . heures de vol: 0
+    transport . train . km: 22000
+    transport . car . km: 8500
+    transport . ferry . heures: 45 #1500km à 33km/h
+    logement . hotel . nombre de nuits: 100
+    logement . auberge de jeunesse . nombre de nuits: 20
+    logement . airbnb . nombre de nuits: 20
+    logement . camping . nombre de nuits: 80
+    logement . sauvage ou WS . nombre de nuits: 104
+    général . nombre de voyageurs: 2
+    général . nombre de jours: 324
+    alimentation . petit dejeuner . type: "'continental'"
+    alimentation . repas . régime: "'viande régulièrement'"
+    alimentation . snacks . nombre: 5
+    alimentation . boissons . fréquence sodas: "'parfois'"
