@@ -1,11 +1,11 @@
 # publicodes-voyagevelo
 
-Modèle Publicodes pour le calcul du bilan carbone d'un voyage à vélo.
+Modèle Publicodes pour le calcul d'empreinte carbone d'un voyage à vélo
 
 ## Installation
 
 ```sh
-yarn install publicodes-voyagevelo publicodes
+bun install publicodes-voyagevelo publicodes
 ```
 
 ## Usage
@@ -28,14 +28,14 @@ console.log(engine.evaluate('salaire net').nodeValue)
 
 ```sh
 // Install the dependencies
-yarn install
+bun install
 
 // Compile the Publicodes rules
-yarn run compile
+bun run compile
 
 // Run the tests
-yarn run test
+bun run test
 
 // Run the documentation server
-yarn run doc
+bun run doc
 ```

@@ -1,35 +1,29 @@
 {
   "name": "publicodes-voyagevelo",
-  "description": "Modèle Publicodes pour le calcul du bilan carbone d'un voyage à vélo.",
+  "description": "Modèle Publicodes pour le calcul d'empreinte carbone d'un voyage à vélo",
   "version": "0.1.0",
   "author": "Clément Auger",
   "license": "MIT",
   "type": "module",
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "main": "publicodes-build/index.js",
+  "types": "publicodes-build/index.d.ts",
   "files": [
-    "build"
+    "publicodes-build"
   ],
   "scripts": {
     "compile": "publicodes compile",
-    "compile:watch": "nodemon -e \"publicodes\" --watch src/ --exec yarn run compile",
-    "test": "vitest run --globals",
-    "clean": "rm -r publicodes-build/*",
-    "doc": "yarn run compile && cd doc && yarn run dev",
-    "doc:build": "yarn run compile && cd doc && yarn run build"
+    "dev": "publicodes dev",
+    "pretest": "bun run compile",
+    "test": "vitest run"
   },
   "peerDependencies": {
     "publicodes": "^1.8.5"
   },
   "devDependencies": {
-    "@incubateur-ademe/nosgestesclimat": "^3.5.0",
-    "@incubateur-ademe/publicodes-commun": "^1.1.5",
+    "@incubateur-ademe/nosgestesclimat": "^3.7.4",
+    "@incubateur-ademe/publicodes-commun": "^2.0.0-rc-4",
     "@publicodes/tools": "^1.7.2",
-    "@types/jest": "^29.5.14",
     "futureco-data": "^0.1.0",
-    "nodemon": "^3.1.9",
-    "vitest": "^2.1.8",
-    "yarn-upgrade-all": "^0.7.4"
-  },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+    "vitest": "^2.1.2"
+  }
 }
